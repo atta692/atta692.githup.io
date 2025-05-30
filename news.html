@@ -3,27 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>News Website</title>
+  <title>EK NEWS</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
+      background: white;
     }
+
     header {
-      background: #333;
+      background: #2e7d32;
       color: white;
       padding: 10px 20px;
       text-align: center;
     }
+
     nav {
       display: flex;
       justify-content: center;
       gap: 20px;
-      background: #444;
+      background: #388e3c;
       padding: 10px;
     }
+
     nav button {
       background: none;
       border: none;
@@ -31,57 +34,96 @@
       font-size: 16px;
       cursor: pointer;
     }
+
     nav button:hover {
       text-decoration: underline;
     }
+
     .section {
       padding: 20px;
       display: none;
     }
+
     .active {
       display: block;
     }
+
     .articles {
       display: flex;
-      gap: 20px;
+      gap: 12px;
       flex-wrap: wrap;
     }
+
     .article {
-      background: white;
+      position: relative;
+      width: 220px;
+      height: 180px;
+      overflow: hidden;
       border-radius: 8px;
-      padding: 10px;
-      box-shadow: 0 0 5px #ccc;
-      width: 300px;
+      box-shadow: o o 4px #17c01d;
       cursor: pointer;
-      text-align: center;
-      scroll-margin-top: 100px;
       transition: transform 0.2s ease;
     }
+
     .article:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transform: scale(1.02);
+      box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
     }
+
     .article img {
-      max-width: 100%;
-      border-radius: 4px;
-      margin-bottom: 10px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
-    .article h3 {
+    .article-info {
+      position: absolute;
+      bottom: 0;
+      background: rgba(225, 225, 225, 0.9);
+      width: 100%;
+      padding: 4px 6px;
+      box-sizing: border-box;
+
+
+    }
+    .article-info h3 {
+      margin: 2px 0;
+      font-size: 14px;
+      color: #2e7d32;
+    }
+    .article-info p {
+      font-size: 12px;
+      color: #444;
       margin: 0;
-      font-size: 18px;
-      color: #333;
     }
+
+    .article h3 {
+      margin: 4px 0;
+      font-size: 14px;
+      color: #2e7d32;
+    }
+
+    .article p {
+      font-size: 12px;
+      color: #444;
+      margin: 4px 0;
+    }
+
     .search-bar {
       text-align: center;
       padding: 10px;
-      background: #eee;
+      background: #e8f5e9;
       position: relative;
     }
+
     #searchInput {
       width: 80%;
       padding: 8px;
       font-size: 16px;
+      border: 1px solid #81c784;
+      border-radius: 4px;
     }
+
     #searchResults {
       max-height: 200px;
       overflow-y: auto;
@@ -94,6 +136,7 @@
       left: 10%;
       z-index: 999;
     }
+
     #searchResults div {
       display: flex;
       align-items: center;
@@ -101,14 +144,16 @@
       padding: 8px;
       cursor: pointer;
     }
+
     #searchResults div img {
       width: 50px;
       height: 40px;
       object-fit: cover;
       border-radius: 4px;
     }
+
     #searchResults div:hover {
-      background: #f0f0f0;
+      background: #f1f8e9;
     }
 
     /* Fullscreen popup overlay */
@@ -117,17 +162,19 @@
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       background: white;
-      color: #333;
+      color: #2e7d32;
       z-index: 1000;
       overflow-y: auto;
       padding: 40px 20px 20px 20px;
     }
+
     #popupContent {
       max-width: 450px;
       margin: auto;
       position: relative;
       text-align: left;
     }
+
     #popupContent img {
       max-width: 100%;
       border-radius: 4px;
@@ -136,37 +183,38 @@
       margin-left: auto;
       margin-right: auto;
     }
+
     #closePopup {
       position: fixed;
       top: 15px;
       right: 20px;
       font-size: 32px;
       font-weight: bold;
-      color: #333;
+      color: #2e7d32;
       cursor: pointer;
       z-index: 1100;
     }
-    
+
     #backButton {
-        position: fixed;
+      position: fixed;
       top: 15px;
       left: 20px;
       font-size: 14px;
       font-weight: bold;
-      background-color: #333;
+      background-color: #2e7d32;
       color: white;
       border: none;
       border-radius: 4px;
       padding: 8px 14px;
       cursor: pointer;
-      
     }
-
   </style>
 </head>
 <body>
   <header>
-    <h1>My News Website</h1>
+    <h1><img src="c:\Users\ok\Pictures\2 logo (6).png" width="100" height="100"> </h1>
+    
+    
   </header>
 
   <div class="search-bar">
@@ -187,16 +235,16 @@
     <div id="Entertainment" class="section"></div>
     <div id="Politics" class="section"></div>
   </div>
+
   <div id="popupOverlay" onclick="closePopup(event)">
     <div id="popupContent">
       <button id="backButton" onclick="closePopup(event)">← Back</button>
-      <span id="closePopup" onclick="closePopup(event)">✖️</span>
+      <span id="closePopup" onclick="closePopup(event)">×</span>
       <h2 id="popupTitle"></h2>
       <img id="popupImage" src="" alt="Article Image" />
       <p id="popupBody"></p>
     </div>
   </div>
- 
 
   <script>
     let articleElements = [];
@@ -205,38 +253,45 @@
       document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
       document.getElementById(cat).classList.add('active');
     }
+
     function loadArticles() {
-  fetch('http://localhost:3000/articles')
-    .then(res => res.json())
-    .then(articles => {
-      articleElements = [];
+      fetch('http://localhost:3000/articles')
+        .then(res => res.json())
+        .then(articles => {
+          articleElements = [];
 
-      ['News', 'Sports', 'Entertainment', 'Politics'].forEach(cat => {
-        const container = document.getElementById(cat);
-        container.innerHTML = '<h2>' + cat + '</h2><div class="articles"></div>';
-        const list = container.querySelector('.articles');
+          ['News', 'Sports', 'Entertainment', 'Politics'].forEach(cat => {
+            const container = document.getElementById(cat);
+            container.innerHTML = '<h2>' + cat + '</h2><div class="articles"></div>';
+            const list = container.querySelector('.articles');
 
-        articles
-          .filter(a => a && a.category === cat) // <- Fixed here
-          .forEach((article, i) => {
-            const div = document.createElement('div');
-            div.className = 'article';
-            div.id = 'article-' + cat + '-' + i;
-            div.innerHTML = `<img src="${article.image}" alt="${article.title}"><h3>${article.title}</h3>`;
-            div.onclick = () => showPopup(article);
-            list.appendChild(div);
+            articles
+              .filter(a => a && a.category === cat)
+              .forEach((article, i) => {
+                const div = document.createElement('div');
+                div.className = 'article';
+                div.id = 'article-' + cat + '-' + i;
+                div.innerHTML = `
+                  <img src="${article.image}" alt="${article.title}">
+                  <div class="article-info">
+                  <h3>${article.title}</h3>
+                  <p>${article.body.slice(0, 30)}...</p>
+                `;
+                div.onclick = () => showPopup(article);
+                list.appendChild(div);
 
-            articleElements.push({
-              element: div,
-              title: article.title.toLowerCase(),
-              body: article.body.toLowerCase(),
-              id: div.id,
-              full: article
-            });
+                articleElements.push({
+                  element: div,
+                  title: article.title.toLowerCase(),
+                  body: article.body.toLowerCase(),
+                  id: div.id,
+                  full: article
+                });
+              });
           });
-      });
-    });
-}
+        });
+    }
+
     function searchArticles() {
       const input = document.getElementById('searchInput').value.toLowerCase();
       const resultsBox = document.getElementById('searchResults');
@@ -283,7 +338,7 @@
     }
 
     function closePopup(event) {
-      const ids = [ 'closePopup', 'backButton'];
+      const ids = ['closePopup', 'backButton'];
       if (ids.includes(event.target.id)) {
         document.getElementById('popupOverlay').style.display = 'none';
       }
